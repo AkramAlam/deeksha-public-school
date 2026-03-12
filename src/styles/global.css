@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #c8973a;
+  --gold-light: #e8b96a;
+  --deep: #1a1612;
+  --navy: #1e3a5f;
+  --cream: #f8f5f0;
+  --text-muted: #6b5e53;
+}
+
+html { scroll-behavior: smooth; font-size: 18px; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--deep);
+  overflow-x: hidden;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+::selection { background: var(--gold); color: white; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+a { text-decoration: none; color: inherit; }
+input, textarea, button, select { font-family: 'DM Sans', sans-serif; font-size: 16px; }
+img { max-width: 100%; height: auto; }
+
+/* ── GLOBAL FONT SCALE ── */
+p  { font-size: 17px; line-height: 1.85; }
+li { font-size: 17px; }
+
+h1 { font-family: 'Playfair Display', serif; font-size: clamp(44px, 7vw, 96px); font-weight: 700; line-height: 1.05; }
+h2 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4.5vw, 56px); font-weight: 700; line-height: 1.1; }
+h3 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3vw, 34px); font-weight: 700; line-height: 1.2; }
+h4 { font-family: 'Playfair Display', serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 700; }
+
+/* Tag / badge labels */
+.tag-label { font-size: 13px !important; letter-spacing: 2.5px; }
+
+/* Section labels (the small caps above headings) */
+.section-tag { font-size: 13px; letter-spacing: 3px; color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  html { font-size: 17px; }
+}
+
+@media (max-width: 768px) {
+  html { font-size: 16px; }
+  p { font-size: 16px; }
+  input, textarea, button, select { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  html { font-size: 15px; }
+  p { font-size: 15px; }
+}
