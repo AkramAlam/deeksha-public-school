@@ -1,16 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-    <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="apple-touch-icon" href="/logo.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deeksha Public School</title>
-    <!-- <title>my-app</title> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deeksha Public School – Dedication Before Desire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      // ── Right Click Disable ──
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+
+      // ── Keyboard Shortcuts Disable ──
+      document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.key === 'F12') { e.preventDefault(); return false; }
+        // Ctrl+Shift+I (DevTools)
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') { e.preventDefault(); return false; }
+        // Ctrl+Shift+J (Console)
+        if (e.ctrlKey && e.shiftKey && e.key === 'J') { e.preventDefault(); return false; }
+        // Ctrl+Shift+C (Inspector)
+        if (e.ctrlKey && e.shiftKey && e.key === 'C') { e.preventDefault(); return false; }
+        // Ctrl+U (View Source)
+        if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
+        // Ctrl+S (Save)
+        if (e.ctrlKey && e.key === 's') { e.preventDefault(); return false; }
+        // Ctrl+A (Select All)
+        if (e.ctrlKey && e.key === 'a') { e.preventDefault(); return false; }
+      });
+
+      // ── Text Selection Disable ──
+      document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+
+      // ── Drag Disable ──
+      document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    </script>
   </body>
 </html>
