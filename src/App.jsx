@@ -23,7 +23,9 @@ import MandatoryDisclosurePage from "./pages/MandatoryDisclosurePage";
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
   }, [pathname]);
   return null;
 }

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function PageHero({ tag, title, highlight, subtitle }) {
   return (
-    <section style={{ background: "linear-gradient(135deg, #1e3a5f 0%, #1a1612 100%)", padding: "clamp(120px,15vw,160px) clamp(20px,5vw,60px) clamp(60px,8vw,100px)", position: "relative", overflow: "hidden" }}>
+    <section style={{ background: "linear-gradient(135deg, #1e3a5f 0%, #1a1612 100%)", padding: "clamp(120px,15vw,160px) clamp(0px,5vw,60px) clamp(60px,8vw,100px)", position: "relative", overflow: "hidden" }}>
       <motion.div animate={{ rotate: 360 }} transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
         style={{ position: "absolute", right: "-5%", top: "-10%", width: "min(500px,50vw)", height: "min(500px,50vw)", borderRadius: "50%", border: "1px solid rgba(200,151,58,0.1)" }} />
       <motion.div animate={{ rotate: -360 }} transition={{ duration: 70, repeat: Infinity, ease: "linear" }}

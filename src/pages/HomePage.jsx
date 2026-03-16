@@ -32,8 +32,8 @@ export default function HomePage() {
   return (
     <div>
       <style>{`
-        .hero-content { padding: 140px 60px 80px; }
-        .hero-title { font-size: clamp(44px, 5vw, 96px); }
+        .hero-content { padding: 140px 16px 80px; }
+        .hero-title { font-size: clamp(44px, 8vw, 96px); }
         .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
         .scroll-indicator { display: flex; }
         @media (max-width: 768px) { .scroll-indicator { display: none !important; } }
@@ -44,21 +44,23 @@ export default function HomePage() {
         .section-inner { max-width: 1200px; margin: 0 auto; }
         .hero-carousel-wrap { display: block; }
         @media (max-width: 900px) {
-          .hero-content { padding: 130px 30px 60px !important; }
+          .hero-content { padding: 130px 12px 60px !important; }
           .stats-grid { grid-template-columns: repeat(2,1fr) !important; }
           .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .mgmt-grid { grid-template-columns: repeat(2,1fr) !important; }
           .hero-carousel-wrap { display: none !important; }
+          section { padding-left: 0 !important; padding-right: 0 !important; }
         }
         @media (max-width: 600px) {
-          .hero-content { padding: 110px 20px 50px !important; }
-          .stats-grid { grid-template-columns: repeat(2,1fr) !important; gap: 16px !important; }
+          .hero-content { padding: 110px 12px 50px !important; }
+          .stats-grid { grid-template-columns: repeat(2,1fr) !important; gap: 12px !important; }
           .features-grid { grid-template-columns: 1fr !important; }
           .mgmt-grid { grid-template-columns: 1fr !important; }
           .hero-btns { flex-direction: column !important; }
           .hero-btns a { text-align: center !important; }
-          .cta-box { padding: 50px 24px !important; }
+          .cta-box { padding: 40px 16px !important; }
           .cta-btns { flex-direction: column !important; align-items: center !important; }
+          section { padding-left: 0 !important; padding-right: 0 !important; }
         }
       `}</style>
 
@@ -100,7 +102,7 @@ export default function HomePage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
             style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(200,151,58,0.18)", border: "1px solid rgba(200,151,58,0.35)", padding: "7px 18px", borderRadius: 100, marginBottom: 28 }}>
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#c8973a" }} />
-            <span style={{ fontSize: 13, color: "#c8973a", letterSpacing: 2, fontWeight: 500 }}>CBSE AFFILIATED · FARIDABAD</span>
+            <span style={{ fontSize: 17, color: "#c8973a", letterSpacing: 2, fontWeight: 500 }}>CBSE AFFILIATED · FARIDABAD</span>
           </motion.div>
 
           <motion.h1 className="hero-title" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45, duration: 1 }}
@@ -169,7 +171,7 @@ export default function HomePage() {
       </section>
 
       {/* STATS */}
-      <section style={{ background: "linear-gradient(135deg, #1e3a5f, #2d5f8a)", padding: "50px 30px" }}>
+      <section style={{ background: "linear-gradient(135deg, #1e3a5f, #2d5f8a)", padding: "50px 16px" }}>
         <div className="stats-grid">
           {STATS.map((s, i) => (
             <FadeIn key={s.label} delay={i * 0.1}>
@@ -184,7 +186,7 @@ export default function HomePage() {
       </section>
 
       {/* ABOUT */}
-      <section style={{ padding: "100px 30px" }}>
+      <section style={{ padding: "100px 16px" }}>
         <div className="about-grid">
           <FadeIn direction="right">
             <div style={{ fontSize: 18, color: "#c8973a", letterSpacing: 3, marginBottom: 16 }}>WHO WE ARE</div>
@@ -219,7 +221,7 @@ export default function HomePage() {
       </section>
 
       {/* MANAGEMENT */}
-      <section style={{ background: "#1a1612", padding: "100px 30px" }}>
+      <section style={{ background: "#1a1612", padding: "100px 16px" }}>
         <FadeIn>
           <div style={{ textAlign: "center", marginBottom: 55 }}>
             <div style={{ fontSize: 18, color: "#c8973a", letterSpacing: 3, marginBottom: 14 }}>LEADERSHIP</div>
@@ -255,7 +257,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: "100px 24px", background: "#f8f5f0" }}>
+      <section style={{ padding: "100px 16px", background: "#f8f5f0" }}>
         <FadeIn>
           <motion.div className="cta-box"
             style={{ maxWidth: 920, margin: "0 auto", textAlign: "center", background: "linear-gradient(135deg, #1e3a5f 0%, #2d5f8a 100%)", borderRadius: 28, padding: "70px 50px", position: "relative", overflow: "hidden" }}>
@@ -278,7 +280,7 @@ export default function HomePage() {
       </section>
 
       {/* MAP */}
-      <section style={{ background: "#1e3a5f", padding: "70px 24px" }}>
+      <section style={{ background: "#1e3a5f", padding: "70px 16px" }}>
         <FadeIn>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginBottom: 36 }}>
