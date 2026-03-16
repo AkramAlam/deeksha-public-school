@@ -157,12 +157,12 @@ export default function StudentCornerPage() {
                 </div>
                 <FadeIn>
                   <div style={{ textAlign:"center", marginTop:32 }}>
-                    <a href="/holiday-homework" style={{ textDecoration:"none" }}>
+                    <Link to="/holiday-homework" style={{ textDecoration:"none" }}>
                       <motion.span whileHover={{ scale:1.05 }} whileTap={{ scale:0.97 }}
                         style={{ display:"inline-block", background:"linear-gradient(135deg,#1e3a5f,#2d5f8a)", color:"white", padding:"13px 36px", borderRadius:100, fontSize:16, fontWeight:500, cursor:"pointer", boxShadow:"0 6px 20px rgba(30,58,95,0.3)" }}>
                         View All Classes Homework →
                       </motion.span>
-                    </a>
+                    </Link>
                   </div>
                 </FadeIn>
               </motion.div>
