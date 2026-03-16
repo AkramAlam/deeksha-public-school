@@ -35,6 +35,8 @@ export default function HomePage() {
         .hero-content { padding: 140px 60px 80px; }
         .hero-title { font-size: clamp(44px, 5vw, 96px); }
         .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+        .scroll-indicator { display: flex; }
+        @media (max-width: 768px) { .scroll-indicator { display: none !important; } }
         .stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
         .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -98,7 +100,7 @@ export default function HomePage() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
             style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(200,151,58,0.18)", border: "1px solid rgba(200,151,58,0.35)", padding: "7px 18px", borderRadius: 100, marginBottom: 28 }}>
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#c8973a" }} />
-            <span style={{ fontSize: 17, color: "#c8973a", letterSpacing: 2, fontWeight: 500 }}>CBSE AFFILIATED · FARIDABAD</span>
+            <span style={{ fontSize: 13, color: "#c8973a", letterSpacing: 2, fontWeight: 500 }}>CBSE AFFILIATED · FARIDABAD</span>
           </motion.div>
 
           <motion.h1 className="hero-title" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45, duration: 1 }}
@@ -123,16 +125,25 @@ export default function HomePage() {
         </motion.div>
 
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}
-          style={{ position: "absolute", bottom: 18, left: "50%", transform: "translateX(-50%)", zIndex: 5, display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+          className="scroll-indicator"
+          style={{ position: "absolute", bottom: 24, left: "50%", transform: "translateX(-50%)", zIndex: 5, display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
           <span style={{ fontSize: 10, color: "rgba(255,255,255,0.35)", letterSpacing: 3 }}>SCROLL</span>
           <div style={{ width: 1, height: 28, background: "linear-gradient(to bottom, rgba(200,151,58,0.5), transparent)" }} />
         </motion.div>
+
       </section>
 
       {/* STATS */}
       {/* QUICK LINKS BAR */}
       <section style={{ background: "#f5f0e8", borderBottom: "1px solid #e8dfc8" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(5,1fr)" }}>
+        <style>{`
+          .quick-links-grid { display: grid; grid-template-columns: repeat(5,1fr); max-width: 1200px; margin: 0 auto; }
+          @media (max-width: 640px) { .quick-links-grid { grid-template-columns: repeat(3,1fr) !important; } }
+          @media (max-width: 380px) { .quick-links-grid { grid-template-columns: repeat(2,1fr) !important; } }
+          .quick-link-icon { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg,#e8973a,#f0aa50); display:flex; align-items:center; justify-content:center; font-size:22px; box-shadow:0 4px 16px rgba(200,151,58,0.3); }
+          @media (max-width: 640px) { .quick-link-icon { width: 44px; height: 44px; font-size: 18px; } }
+        `}</style>
+        <div className="quick-links-grid">
           {[
             { icon: "🏢", label: "INFRASTRUCTURE", to: "/infrastructure" },
             { icon: "🎨", label: "ACTIVITY", to: "/gallery" },
@@ -144,18 +155,11 @@ export default function HomePage() {
               <motion.div whileHover={{ background: "#ede4d0" }} whileTap={{ scale: 0.97 }}
                 style={{
                   display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-                  padding: "28px 12px", gap: 14, cursor: "pointer", transition: "background 0.2s",
+                  padding: "20px 8px", gap: 10, cursor: "pointer", transition: "background 0.2s",
                   borderRight: i < 4 ? "1px solid #ddd5bb" : "none",
                 }}>
-                <div style={{
-                  width: 64, height: 64, borderRadius: "50%",
-                  background: "linear-gradient(135deg, #e8973a, #f0aa50)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 26, boxShadow: "0 4px 16px rgba(200,151,58,0.3)"
-                }}>
-                  {item.icon}
-                </div>
-                <span style={{ fontSize: 12, fontWeight: 700, color: "#1e3a5f", letterSpacing: 1.5, textAlign: "center" }}>
+                <div className="quick-link-icon">{item.icon}</div>
+                <span style={{ fontSize: "clamp(9px,1.5vw,12px)", fontWeight: 700, color: "#1e3a5f", letterSpacing: 1, textAlign: "center", lineHeight: 1.3 }}>
                   {item.label}
                 </span>
               </motion.div>
