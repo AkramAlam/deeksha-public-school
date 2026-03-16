@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import PageHero from "../components/ui/PageHero";
 import FadeIn from "../components/ui/FadeIn";
@@ -28,13 +29,22 @@ const GROUP_COLORS = [
 ];
 
 function getColor(sr) {
-  for (const g of GROUP_COLORS) {
-    if (sr >= g.range[0] && sr <= g.range[1]) return g;
-  }
-  return GROUP_COLORS[0];
+  if (sr >= 1 && sr <= 3) return GROUP_COLORS[0];  // Pre-Primary
+  if (sr >= 4 && sr <= 8) return GROUP_COLORS[1];  // Primary
+  if (sr >= 9 && sr <= 11) return GROUP_COLORS[2]; // Middle
+  return GROUP_COLORS[3];                           // Secondary
 }
 
 export default function HolidayHomeworkPage() {
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filtered = activeFilter === "All"
+    ? HOMEWORK
+    : HOMEWORK.filter(hw => {
+        const grp = getColor(hw.sr);
+        return grp.label === activeFilter;
+      });
+
   return (
     <div>
       <PageHero
@@ -47,21 +57,38 @@ export default function HolidayHomeworkPage() {
       <section style={{ background: "#f8f5f0", padding: "60px 24px 80px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
-          {/* Group legend */}
+          {/* Filter Buttons */}
           <FadeIn>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginBottom: 44 }}>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center", marginBottom: 44 }}>
+              {/* All button */}
+              <motion.button key="All" onClick={() => setActiveFilter("All")}
+                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
+                style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 20px", borderRadius: 100, border: "none", cursor: "pointer", fontWeight: 600, fontSize: 13,
+                  background: activeFilter === "All" ? "linear-gradient(135deg,#1e3a5f,#2d5f8a)" : "white",
+                  color: activeFilter === "All" ? "white" : "#4a3f35",
+                  boxShadow: activeFilter === "All" ? "0 4px 16px rgba(30,58,95,0.3)" : "0 2px 10px rgba(0,0,0,0.06)",
+                }}>
+                All Classes
+              </motion.button>
+
               {GROUP_COLORS.map((g) => (
-                <div key={g.label} style={{ display: "flex", alignItems: "center", gap: 8, background: "white", padding: "8px 18px", borderRadius: 100, boxShadow: "0 2px 10px rgba(0,0,0,0.06)" }}>
-                  <div style={{ width: 12, height: 12, borderRadius: "50%", background: g.color }} />
-                  <span style={{ fontSize: 13, fontWeight: 600, color: "#4a3f35" }}>{g.label}</span>
-                </div>
+                <motion.button key={g.label} onClick={() => setActiveFilter(g.label)}
+                  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}
+                  style={{ display: "flex", alignItems: "center", gap: 8, padding: "9px 20px", borderRadius: 100, border: "none", cursor: "pointer", fontWeight: 600, fontSize: 13,
+                    background: activeFilter === g.label ? g.color : "white",
+                    color: activeFilter === g.label ? "white" : "#4a3f35",
+                    boxShadow: activeFilter === g.label ? `0 4px 16px ${g.color}55` : "0 2px 10px rgba(0,0,0,0.06)",
+                  }}>
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: activeFilter === g.label ? "rgba(255,255,255,0.7)" : g.color }} />
+                  {g.label}
+                </motion.button>
               ))}
             </div>
           </FadeIn>
 
           {/* Cards Grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 18 }}>
-            {HOMEWORK.map((hw, i) => {
+          <motion.div layout style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 18 }}>
+            {filtered.map((hw, i) => {
               const grp = getColor(hw.sr);
               return (
                 <FadeIn key={hw.sr} delay={i * 0.04}>
@@ -134,7 +161,7 @@ export default function HolidayHomeworkPage() {
                 </FadeIn>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Note */}
           <FadeIn>
